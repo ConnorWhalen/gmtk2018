@@ -4,6 +4,7 @@ var has_item
 var closed
 var rect
 var type
+var ingredient
 
 func _ready():
 	pass
@@ -14,37 +15,38 @@ func _process(delta):
 func init(position, type_):
 	var rect_size = get_node("closed").get_texture().get_size()*get_node("closed").scale
 	rect = Rect2(position - rect_size*0.5, rect_size)
+	type = type_
+	ingredient = get_node("ingredient/" + type)
 	self.close()
 	has_item = true
 	closed = true
-	type = type_
 
 func open():
 	get_node("closed").visible = false
 	get_node("open").visible = true
 	if has_item:
-		get_node("item").visible = true
+		ingredient.visible = true
 	closed = false
 
 func close():
 	get_node("open").visible = false
-	get_node("item").visible = false
+	ingredient.visible = false
 	get_node("closed").visible = true
 	closed = true
 
 func collect():
 	has_item = false
-	get_node("item").visible = false
+	ingredient.visible = false
 	return true
 	return false
 
 func highlight():
 	get_node("closed").scale = Vector2(0.6, 0.6)
-	get_node("item").scale = Vector2(0.55, 0.55)
+	ingredient.scale = Vector2(0.55, 0.55)
 
 func unhighlight():
 	get_node("closed").scale = Vector2(0.55, 0.55)
-	get_node("item").scale = Vector2(0.5, 0.5)
+	ingredient.scale = Vector2(0.5, 0.5)
 
 func collide(point):
 	return rect.has_point(point)
