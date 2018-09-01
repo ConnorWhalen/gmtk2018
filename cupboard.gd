@@ -39,4 +39,5 @@ func unhighlight():
 	get_node("item").scale = Vector2(0.5, 0.5)
 
 func collide(point):
+	print(point-self.position)
 	return rect.has_point(point)

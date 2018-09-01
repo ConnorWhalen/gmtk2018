@@ -14,7 +14,7 @@ func _ready():
 
 	var camera = get_node("camera")
 	camera.position = background.position
-	camera.init(background.position)
+	camera.init(screen_size*0.5)
 	camera.limit_left = background.position.x - background_rect.x*0.5
 	camera.limit_right = background.position.x + background_rect.x*0.5
 	camera.limit_top = background.position.y - background_rect.y*0.5
