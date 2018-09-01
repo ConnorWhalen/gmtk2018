@@ -1,6 +1,7 @@
 extends Node2D
 
 var has_item
+var closed
 var rect
 
 func _ready():
@@ -14,17 +15,20 @@ func init(position):
 	rect = Rect2(position - rect_size*0.5, rect_size)
 	self.close()
 	has_item = true
+	closed = true
 
 func open():
 	get_node("closed").visible = false
 	get_node("open").visible = true
 	if has_item:
 		get_node("item").visible = true
+	closed = false
 
 func close():
 	get_node("open").visible = false
 	get_node("item").visible = false
 	get_node("closed").visible = true
+	closed = true
 
 func collect():
 	has_item = false
@@ -39,5 +43,15 @@ func unhighlight():
 	get_node("item").scale = Vector2(0.5, 0.5)
 
 func collide(point):
-	print(point-self.position)
 	return rect.has_point(point)
+
+func is_closed():
+	return closed
+
+func select():
+	if closed:
+		self.open()
+	elif has_item:
+		self.collect()
+		return true
+	return false

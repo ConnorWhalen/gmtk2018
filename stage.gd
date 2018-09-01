@@ -46,7 +46,22 @@ func _process(delta):
 	if (Input.is_action_pressed("scroll_down") and (camera.position.y + screen_size.y*0.5) < camera.limit_bottom):
 		camera.position.y += SCROLL_SPEED * delta
 
-	if (Input.is_action_just_pressed("space")):
-		checklist.check()
-		if checklist.complete():
-			get_node("scrolling").visible = false
+	# if (Input.is_action_just_pressed("space")):
+	# 	checklist.check()
+	# 	if checklist.complete():
+	# 		get_node("scrolling").visible = false
+
+	if (Input.is_action_just_pressed("left_select")):
+		var success = cupboard_manager.select_left()
+		if (success):
+			checklist.check()
+			if checklist.complete():
+				get_node("scrolling").visible = false
+
+
+	if (Input.is_action_just_pressed("right_select")):
+		var success = cupboard_manager.select_right()
+		if (success):
+			checklist.check()
+			if checklist.complete():
+				get_node("scrolling").visible = false

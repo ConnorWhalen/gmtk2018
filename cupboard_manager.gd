@@ -12,8 +12,6 @@ func _ready():
 	pass
 
 func _process(delta):
-
-	#print(camera.location())
 	var left_cupboard = self.collide(left_detector+camera.location())
 	if left_cupboard != left_highlighted:
 		if left_highlighted != null:
@@ -42,7 +40,6 @@ func init(items, left_detector_, right_detector_, camera_):
 	camera = camera_
 
 func collide(point):
-	#print(point)
 	var children = self.get_children()
 	for i in range(len(children)):
 		if children[i].collide(point):
@@ -54,3 +51,13 @@ func highlight(index):
 
 func unhighlight(index):
 	self.get_children()[index].unhighlight()
+
+func select_left():
+	if left_highlighted != null:
+		return self.get_children()[left_highlighted].select()
+	return false
+
+func select_right():
+	if right_highlighted != null:
+		return self.get_children()[right_highlighted].select()
+	return false
