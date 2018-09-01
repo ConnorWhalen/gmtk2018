@@ -22,17 +22,23 @@ func init(items_):
 		var child_size = child.size()
 		child.position.x = (child_size.x*0.5 + PADDING) * (2*i + 1) + PADDING
 		child.position.y = child_size.y*0.5 + PADDING*2
-		child.rotation_degrees = items_[i]
+		child.init(items_[i])
 		self.add_child(child)
 	self.get_children()[0].reveal()
 
 func check():
-	self.get_children()[current].complete()
+	var item = self.get_children()[current]
+	item.complete()
 	if current < total-1:
 		current += 1
 		self.get_children()[current].reveal()
 	else:
 		is_complete = true
+	return true
+	return false
 
 func complete():
 	return is_complete
+
+func current_item():
+	return self.get_children()[current].get_type()

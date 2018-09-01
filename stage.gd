@@ -31,11 +31,14 @@ func _ready():
 	player.init(player.position)
 
 	checklist = get_node("static/checklist")
-	checklist.init([90, 270, 180, 0])
+	checklist.init(["BREAD", "HAM", "SAUCE", "BREAD"])
 
 	cupboard_manager = get_node("scrolling/cupboard_manager")
 	cupboard_manager.init(
-		[Vector2(-100, 100), Vector2(400, 100), Vector2(900, 100), Vector2(1400, 100), Vector2(-100, 300), Vector2(400, 300), Vector2(900, 300), Vector2(1400, 300)],
+		[Vector2(-100, 100), Vector2(400, 100), Vector2(900, 100), Vector2(1400, 100),
+		 Vector2(-100, 300), Vector2(400, 300), Vector2(900, 300), Vector2(1400, 300)],
+		["HAM", "BREAD", "SAUCE", "HAM",
+		 "BREAD", "SAUCE", "BREAD", "BREAD"],
 		get_node("static/player/left_detector"),
 		get_node("static/player/right_detector"),
 		camera,
@@ -69,13 +72,8 @@ func _process(delta):
 		elif (camera.position.y + screen_size.y*0.5) < camera.limit_bottom:
 			camera.position.y += SCROLL_SPEED * delta
 
-	# if (Input.is_action_just_pressed("space")):
-	# 	checklist.check()
-	# 	if checklist.complete():
-	# 		get_node("scrolling").visible = false
-
 	if (Input.is_action_just_pressed("left_select")):
-		var success = cupboard_manager.select_left()
+		var success = cupboard_manager.select_left(checklist.current_item())
 		if (success):
 			emit_signal("clap_sample")
 			checklist.check()
@@ -84,7 +82,7 @@ func _process(delta):
 
 
 	if (Input.is_action_just_pressed("right_select")):
-		var success = cupboard_manager.select_right()
+		var success = cupboard_manager.select_right(checklist.current_item())
 		if (success):
 			emit_signal("clap_sample")
 			checklist.check()

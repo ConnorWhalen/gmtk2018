@@ -30,11 +30,11 @@ func _process(delta):
 		right_highlighted = right_cupboard
 
 
-func init(items, left_detector_, right_detector_, camera_, player_):
+func init(items, types, left_detector_, right_detector_, camera_, player_):
 	for i in range(len(items)):
 		var cupboard = cupboard_scene.instance()
 		cupboard.position = items[i]
-		cupboard.init(items[i])
+		cupboard.init(items[i], types[i])
 		self.add_child(cupboard)
 	left_detector = left_detector_
 	right_detector = right_detector_
@@ -54,12 +54,12 @@ func highlight(index):
 func unhighlight(index):
 	self.get_children()[index].unhighlight()
 
-func select_left():
+func select_left(type):
 	if left_highlighted != null:
-		return self.get_children()[left_highlighted].select()
+		return self.get_children()[left_highlighted].select(type)
 	return false
 
-func select_right():
+func select_right(type):
 	if right_highlighted != null:
-		return self.get_children()[right_highlighted].select()
+		return self.get_children()[right_highlighted].select(type)
 	return false

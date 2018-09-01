@@ -1,5 +1,7 @@
 extends Node2D
 
+var type
+
 func _ready():	
 	pass
 
@@ -15,3 +17,9 @@ func reveal():
 func complete():
 	get_node("incomplete").visible = false
 	get_node("complete").visible = true
+
+func init(type_):
+	type = type_
+
+func get_type():
+	return type
