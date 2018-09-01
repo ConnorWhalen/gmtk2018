@@ -21,9 +21,9 @@ func init(items_):
 	for i in total:
 		var child = checklist_item_scene.instance()
 		var child_size = child.size()
-		child.position.x = (child_size.x*0.5 + PADDING) * (2*i + 1)
-		child.position.y = child_size.y*0.5 + PADDING
-		child.rotation = items_[i]
+		child.position.x = (child_size.x*0.5 + PADDING) * (2*i + 1) + PADDING
+		child.position.y = child_size.y*0.5 + PADDING*2
+		child.rotation_degrees = items_[i]
 		self.add_child(child)
 	self.get_children()[0].reveal()
 
