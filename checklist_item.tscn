@@ -2,10 +2,10 @@
 
 [ext_resource path="res://checklist_item.gd" type="Script" id=1]
 [ext_resource path="res://resources/ingredients/hamItem.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://resources/ingredients/sauceItem.png" type="Texture" id=3]
 [ext_resource path="res://resources/ingredients/breadItem.png" type="Texture" id=4]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
