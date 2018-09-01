@@ -11,7 +11,6 @@ var is_complete = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	pass
 
 func _process(delta):
 	pass

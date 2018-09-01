@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://stage.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://checklist.gd" type="Script" id=3]
+[ext_resource path="res://cupboard_manager.gd" type="Script" id=3]
+[ext_resource path="res://resources/handRight.png" type="Texture" id=4]
+[ext_resource path="res://resources/handLeft.png" type="Texture" id=5]
+[ext_resource path="res://checklist.gd" type="Script" id=6]
+[ext_resource path="res://camera.gd" type="Script" id=7]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -15,7 +19,12 @@ script = ExtResource( 1 )
 position = Vector2( 560.152, 314.112 )
 scale = Vector2( 18.4487, 8.29496 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
+
+[node name="cupboard_manager" type="Node2D" parent="scrolling" index="1"]
+
+script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="static" type="CanvasLayer" parent="." index="1"]
 
@@ -29,20 +38,41 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="static/player" index="0"]
 
-position = Vector2( 845.048, 537.986 )
-scale = Vector2( 1.55662, 0.51847 )
-texture = ExtResource( 2 )
+position = Vector2( 845.048, 516.996 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite2" type="Sprite" parent="static/player" index="1"]
 
-position = Vector2( 274.846, 537.601 )
-scale = Vector2( 1.59075, 0.507418 )
+position = Vector2( 274.846, 520.124 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="left_detector" type="Node2D" parent="static/player" index="2"]
+
+position = Vector2( 266.239, 360.18 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="static/player/left_detector" index="0"]
+
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform", "Z Index" ]
+
+[node name="right_detector" type="Node2D" parent="static/player" index="3"]
+
+position = Vector2( 836.441, 365.934 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="static/player/right_detector" index="0"]
+
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="checklist" type="Node2D" parent="static" index="1"]
 
-script = ExtResource( 3 )
+script = ExtResource( 6 )
 
 [node name="camera" type="Camera2D" parent="." index="2"]
 
@@ -68,6 +98,7 @@ drag_margin_bottom = 0.0
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+script = ExtResource( 7 )
 _sections_unfolded = [ "Drag Margin", "Limit", "Transform" ]
 
 
