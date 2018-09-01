@@ -25,6 +25,9 @@ func _ready():
 	camera.limit_bottom = background.position.y + background_rect.y*0.5
 	camera.current = true
 
+	var player = get_node("static/player")
+	player.init(player.position)
+
 	checklist = get_node("static/checklist")
 	checklist.init([90, 270, 180, 0])
 
@@ -33,13 +36,14 @@ func _ready():
 		[Vector2(-100, 100), Vector2(400, 100), Vector2(900, 100), Vector2(1400, 100), Vector2(-100, 300), Vector2(400, 300), Vector2(900, 300), Vector2(1400, 300)],
 		get_node("static/player/left_detector"),
 		get_node("static/player/right_detector"),
-		camera)
+		camera,
+		player)
 
 func _process(delta):
 	var camera = get_node("camera")
 	
 	var player = get_node("static/player")
-	print(player.position)
+	# print(player.position)
 	if Input.is_action_pressed("scroll_left"):
 		if player.position.x > -PLAYER_BUFFER_LEFT:
 			player.position.x -= SCROLL_SPEED * delta

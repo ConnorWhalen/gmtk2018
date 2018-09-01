@@ -11,7 +11,7 @@ func _process(delta):
 	pass
 
 func init(position):
-	var rect_size = get_node("closed").get_texture().get_size()
+	var rect_size = get_node("closed").get_texture().get_size()*get_node("closed").scale
 	rect = Rect2(position - rect_size*0.5, rect_size)
 	self.close()
 	has_item = true
@@ -35,11 +35,11 @@ func collect():
 	get_node("item").visible = false
 
 func highlight():
-	get_node("closed").scale = Vector2(1.2, 1.2)
+	get_node("closed").scale = Vector2(0.6, 0.6)
 	get_node("item").scale = Vector2(0.55, 0.55)
 
 func unhighlight():
-	get_node("closed").scale = Vector2(1.1, 1.1)
+	get_node("closed").scale = Vector2(0.55, 0.55)
 	get_node("item").scale = Vector2(0.5, 0.5)
 
 func collide(point):
