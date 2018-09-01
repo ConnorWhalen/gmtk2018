@@ -5,7 +5,7 @@ signal clap_sample
 const SCROLL_SPEED = 300
 const PLAYER_BUFFER_LEFT = 200
 const PLAYER_BUFFER_RIGHT = 300
-const PLAYER_BUFFER_UP = 350
+const PLAYER_BUFFER_UP = 500
 const PLAYER_BUFFER_BOTTOM = 0
 
 var screen_size
@@ -35,7 +35,7 @@ func _ready():
 
 	cupboard_manager = get_node("scrolling/cupboard_manager")
 	cupboard_manager.init(
-		[Vector2(-100, 100), Vector2(400, 100), Vector2(900, 100), Vector2(1400, 100),
+		[Vector2(-100, 0), Vector2(400, 0), Vector2(900, 0), Vector2(1400, 0),
 		 Vector2(-100, 300), Vector2(400, 300), Vector2(900, 300), Vector2(1400, 300)],
 		["HAM", "BREAD", "SAUCE", "HAM",
 		 "BREAD", "SAUCE", "BREAD", "BREAD"],

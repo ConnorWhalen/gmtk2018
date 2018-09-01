@@ -5,14 +5,14 @@
 [ext_resource path="res://resources/handRight.png" type="Texture" id=3]
 [ext_resource path="res://resources/handLeft.png" type="Texture" id=4]
 
-[node name="player" type="Node2D"]
+[node name="player" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="left_detector" type="Node2D" parent="." index="0"]
 
-position = Vector2( 313.967, 408.969 )
+position = Vector2( 324.573, 570.183 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="left_detector" index="0"]
@@ -24,7 +24,7 @@ _sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
 
 [node name="right_detector" type="Node2D" parent="." index="1"]
 
-position = Vector2( 900.078, 408.359 )
+position = Vector2( 899.017, 570.633 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="right_detector" index="0"]
