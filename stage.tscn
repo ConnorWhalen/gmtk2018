@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://stage.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://resources/kitchenBgOne_Wide.png" type="Texture" id=2]
 [ext_resource path="res://cupboard_manager.gd" type="Script" id=3]
 [ext_resource path="res://resources/handLeft.png" type="Texture" id=4]
 [ext_resource path="res://resources/handRight.png" type="Texture" id=5]
-[ext_resource path="res://checklist.gd" type="Script" id=6]
-[ext_resource path="res://camera.gd" type="Script" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://checklist.gd" type="Script" id=7]
+[ext_resource path="res://camera.gd" type="Script" id=8]
+[ext_resource path="res://song.tscn" type="PackedScene" id=9]
+[ext_resource path="res://clap.tscn" type="PackedScene" id=10]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -18,9 +21,9 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="background" type="Sprite" parent="scrolling" index="0"]
 
-position = Vector2( 560.152, 314.112 )
-scale = Vector2( 18.4487, 8.29496 )
+position = Vector2( 640, 360 )
 texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 1280, 720 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="cupboard_manager" type="Node2D" parent="scrolling" index="1"]
@@ -49,41 +52,41 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="static/player" index="0"]
 
-position = Vector2( 845.048, 516.996 )
+position = Vector2( 893.836, 567.905 )
 texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite2" type="Sprite" parent="static/player" index="1"]
 
-position = Vector2( 274.846, 520.124 )
+position = Vector2( 323.634, 565.73 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="left_detector" type="Node2D" parent="static/player" index="2"]
 
-position = Vector2( 266.239, 360.18 )
+position = Vector2( 313.967, 408.969 )
 _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="static/player/left_detector" index="0"]
 
 scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
 [node name="right_detector" type="Node2D" parent="static/player" index="3"]
 
-position = Vector2( 836.441, 365.934 )
+position = Vector2( 900.078, 408.359 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="static/player/right_detector" index="0"]
 
 scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="checklist" type="Node2D" parent="static" index="1"]
 
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="camera" type="Camera2D" parent="." index="2"]
 
@@ -109,7 +112,11 @@ drag_margin_bottom = 0.0
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Drag Margin", "Limit", "Transform" ]
+
+[node name="song" parent="." index="3" instance=ExtResource( 9 )]
+
+[node name="clap" parent="." index="4" instance=ExtResource( 10 )]
 
 

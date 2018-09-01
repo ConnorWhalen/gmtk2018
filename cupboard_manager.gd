@@ -12,7 +12,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	var left_cupboard = self.collide(left_detector+camera.location())
+	var left_cupboard = self.collide(left_detector.position+camera.location())
 	if left_cupboard != left_highlighted:
 		if left_highlighted != null:
 			self.unhighlight(left_highlighted)
@@ -20,7 +20,7 @@ func _process(delta):
 			self.highlight(left_cupboard)
 		left_highlighted = left_cupboard
 
-	var right_cupboard = self.collide(right_detector+camera.location())
+	var right_cupboard = self.collide(right_detector.position+camera.location())
 	if right_cupboard != right_highlighted:
 		if right_highlighted != null:
 			self.unhighlight(right_highlighted)
