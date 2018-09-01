@@ -1,10 +1,10 @@
 extends Node2D
 
 const SCROLL_SPEED = 300
-const PLAYER_BUFFER_LEFT = 300
+const PLAYER_BUFFER_LEFT = 200
 const PLAYER_BUFFER_RIGHT = 300
-const PLAYER_BUFFER_UP = 200
-const PLAYER_BUFFER_RIGHT = 200
+const PLAYER_BUFFER_UP = 350
+const PLAYER_BUFFER_BOTTOM = 0
 
 var screen_size
 var checklist
@@ -43,7 +43,6 @@ func _process(delta):
 	var camera = get_node("camera")
 	
 	var player = get_node("static/player")
-	# print(player.position)
 	if Input.is_action_pressed("scroll_left"):
 		if player.position.x > -PLAYER_BUFFER_LEFT:
 			player.position.x -= SCROLL_SPEED * delta
@@ -51,7 +50,7 @@ func _process(delta):
 			camera.position.x -= SCROLL_SPEED * delta
 
 	if Input.is_action_pressed("scroll_right"):
-		if player.position.x < PLAYER_BUFFER_LEFT:
+		if player.position.x < PLAYER_BUFFER_RIGHT:
 			player.position.x += SCROLL_SPEED * delta
 		elif (camera.position.x + screen_size.x*0.5) < camera.limit_right:
 			camera.position.x += SCROLL_SPEED * delta
@@ -63,7 +62,7 @@ func _process(delta):
 			camera.position.y -= SCROLL_SPEED * delta
 
 	if Input.is_action_pressed("scroll_down"):
-		if player.position.y < PLAYER_BUFFER_UP:
+		if player.position.y < PLAYER_BUFFER_BOTTOM:
 			player.position.y += SCROLL_SPEED * delta
 		elif (camera.position.y + screen_size.y*0.5) < camera.limit_bottom:
 			camera.position.y += SCROLL_SPEED * delta

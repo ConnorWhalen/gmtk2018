@@ -13,7 +13,6 @@ func _ready():
 	pass
 
 func _process(delta):
-	print(left_detector.position)
 	var left_cupboard = self.collide(left_detector.position+camera.location()+player.location())
 	if left_cupboard != left_highlighted:
 		if left_highlighted != null:
