@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/handRight.png" type="Texture" id=3]
 [ext_resource path="res://resources/handLeft.png" type="Texture" id=4]
 
-[node name="player" type="Node2D" index="0"]
+[node name="player" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]

@@ -3,7 +3,7 @@ extends AudioStreamPlayer
 var song_time
 
 func _ready():
-	pass
+	self.play(0.0)
 
 func _process(delta):
 	song_time = self.get_playback_position()

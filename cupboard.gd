@@ -3,6 +3,7 @@ extends Node2D
 var has_item
 var closed
 var rect
+var type
 
 func _ready():
 	pass
@@ -10,12 +11,13 @@ func _ready():
 func _process(delta):
 	pass
 
-func init(position):
+func init(position, type_):
 	var rect_size = get_node("closed").get_texture().get_size()*get_node("closed").scale
 	rect = Rect2(position - rect_size*0.5, rect_size)
 	self.close()
 	has_item = true
 	closed = true
+	type = type_
 
 func open():
 	get_node("closed").visible = false
@@ -33,6 +35,8 @@ func close():
 func collect():
 	has_item = false
 	get_node("item").visible = false
+	return true
+	return false
 
 func highlight():
 	get_node("closed").scale = Vector2(0.6, 0.6)
@@ -48,10 +52,10 @@ func collide(point):
 func is_closed():
 	return closed
 
-func select():
+func select(type_):
 	if closed:
 		self.open()
-	elif has_item:
+	elif has_item and type == type_:
 		self.collect()
 		return true
 	return false
