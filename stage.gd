@@ -1,5 +1,7 @@
 extends Node2D
 
+signal clap_sample
+
 const SCROLL_SPEED = 300
 const PLAYER_BUFFER_LEFT = 200
 const PLAYER_BUFFER_RIGHT = 300
@@ -75,6 +77,7 @@ func _process(delta):
 	if (Input.is_action_just_pressed("left_select")):
 		var success = cupboard_manager.select_left()
 		if (success):
+			emit_signal("clap_sample")
 			checklist.check()
 			if checklist.complete():
 				get_node("scrolling").visible = false
@@ -83,6 +86,7 @@ func _process(delta):
 	if (Input.is_action_just_pressed("right_select")):
 		var success = cupboard_manager.select_right()
 		if (success):
+			emit_signal("clap_sample")
 			checklist.check()
 			if checklist.complete():
 				get_node("scrolling").visible = false
