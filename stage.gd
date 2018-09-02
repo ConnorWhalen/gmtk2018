@@ -5,6 +5,7 @@ signal clap_sample
 signal grab_food(a, b)
 signal win_screen
 signal sandwich_done
+signal stage_win
 
 const SCROLL_SPEED = 300
 const PLAYER_BUFFER_LEFT = 200
@@ -19,8 +20,10 @@ var cupboard_manager
 var left_throw_timer
 var right_throw_timer
 
+var scan_done = false
 var playing = false
 var slide_sandwich = false
+var complete = false
 var win_text
 
 func _ready():
@@ -148,12 +151,16 @@ func _process(delta):
 		if (Input.is_action_just_pressed("right_juggle") and right.animation != "Throw"):
 			right.play("Throw")
 			right_throw_timer.start()
-			
-	else:
+	elif !scan_done:
 		if camera.done_scan():
 			cupboard_manager.close_all()
 			playing = true
+			scan_done = true
 			player.slide_in()
+	elif complete:
+		if (Input.is_action_pressed("accept_start")):
+			emit_signal("stage_win")
+			print("STAGE_WIN")
 
 
 func collect_food(food, player, which_h):
@@ -165,6 +172,7 @@ func collect_food(food, player, which_h):
 
 func _win_screen():
 	playing = false
+	complete = true
 	get_node("static/sandwich").slide_in()
 
 func _sandwich_done():
