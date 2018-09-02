@@ -1,6 +1,6 @@
 extends Node2D
 
-
+signal miss_sample
 signal clap_sample
 signal grab_food(a, b)
 signal win_screen
@@ -192,6 +192,8 @@ func game_over():
 	playing = false
 	complete_lose = true
 	var text = get_node("static/game_over")
+	get_node('song').stop()
+	emit_signal("miss_sample")
 	text.visible = true
 	get_node("static/press_start").visible = true
 

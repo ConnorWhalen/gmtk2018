@@ -14,7 +14,7 @@
 [ext_resource path="res://miss.tscn" type="PackedScene" id=12]
 [ext_resource path="res://miss.gd" type="Script" id=13]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 stageToLoad = "res://1.stage"
@@ -138,5 +138,8 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
 
 [node name="miss" parent="." index="5" instance=ExtResource( 12 )]
 
+volume_db = -10.0
 script = ExtResource( 13 )
+_sections_unfolded = [ "Pause" ]
+
 
