@@ -1,6 +1,6 @@
 extends Node2D
 
-signal game_over
+
 signal clap_sample
 signal grab_food(a, b)
 
@@ -157,8 +157,7 @@ func collect_food(food, player, which_h):
 	if checklist.complete():
 		player.zoom()
 
-func game_over():
-	print("oh no")
+
 
 func resume_idle_left():
 	var left = get_node("static/player/left_hand/leftHandAnimatedSprite/AnimatedSprite")
