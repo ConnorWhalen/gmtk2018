@@ -29,7 +29,6 @@ func _ready():
 	elapse = 0.0
 
 func _process(delta):
-<<<<<<< HEAD
 	elapse += delta
 	interp_value = 2.0/2.4 * elapse
 	if elapse > 3.0:
