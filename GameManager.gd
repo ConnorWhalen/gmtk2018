@@ -1,5 +1,6 @@
 extends Node
 
+signal miss_sample
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -32,6 +33,10 @@ func on_pass_controls():
 	currentScene.connect("stage_lose", self, "on_stage_lose")
 	currentScene.connect("stage_win", self, "on_stage_win")
 
+func on_game_over():
+	currentScene.get_node('song').stop()
+	emit_signal("miss_sample")
+
 func on_stage_lose():
 	self.remove_child(currentScene)
 	currentScene = gameScene.instance()
@@ -39,6 +44,7 @@ func on_stage_lose():
 	
 func on_stage_win():
 	pass
+
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.

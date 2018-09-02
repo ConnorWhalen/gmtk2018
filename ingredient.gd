@@ -17,6 +17,7 @@ var fractional
 var ingred
 var ingred_size
 
+var first_time = true
 var exiting = false
 var done = false
 var done_timer
@@ -28,24 +29,26 @@ func _ready():
 	elapse = 0.0
 
 func _process(delta):
-	if processing:
-		elapse += delta
-		interp_value = 2.0/2.4 * elapse
-		if elapse > 3.0:
+<<<<<<< HEAD
+	elapse += delta
+	interp_value = 2.0/2.4 * elapse
+	if elapse > 3.0:
+		if first_time:
 			emit_signal("game_over")
+			first_time = false
 			processing = false
-		whole = floor(interp_value)
-		fractional = fmod(interp_value, 1.0)
-		self.position = path.interpolate(whole, fractional)
-		self.rotation_degrees += angle_increment * delta
-		var left_check = left_hand_rect.has_point(self.position)
-		var left_juggle = Input.is_action_just_pressed("left_juggle")
-		if left_check and left_juggle and elapse>1.2:
-			self._left()
-		var right_check = right_hand_rect.has_point(self.position)
-		var right_juggle = Input.is_action_just_pressed("right_juggle")
-		if right_check and right_juggle and elapse>1.2: 
-			self._right()
+	whole = floor(interp_value)
+	fractional = fmod(interp_value, 1.0)
+	self.position = path.interpolate(whole, fractional)
+	self.rotation_degrees += angle_increment * delta
+	var left_check = left_hand_rect.has_point(self.position)
+	var left_juggle = Input.is_action_just_pressed("left_juggle")
+	if left_check and left_juggle and elapse>1.2:
+		self._left()
+	var right_check = right_hand_rect.has_point(self.position)
+	var right_juggle = Input.is_action_just_pressed("right_juggle")
+	if right_check and right_juggle and elapse>1.2: 
+		self._right()
 
 func _left():
 	if !exiting:
