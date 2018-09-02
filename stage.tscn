@@ -114,5 +114,3 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
 [node name="song" parent="." index="3" instance=ExtResource( 10 )]
 
 [node name="clap" parent="." index="4" instance=ExtResource( 11 )]
-
-

@@ -21,6 +21,8 @@ var exiting = false
 var done = false
 var done_timer
 
+var angle_increment = 360
+
 func _ready():
 	elapse = 0.0
 
@@ -32,6 +34,7 @@ func _process(delta):
 	whole = floor(interp_value)
 	fractional = fmod(interp_value, 1.0)
 	self.position = path.interpolate(whole, fractional)
+	self.rotation_degrees += angle_increment * delta
 	var left_check = left_hand_rect.has_point(self.position)
 	var left_juggle = Input.is_action_just_pressed("left_juggle")
 	if left_check and left_juggle and elapse>1.2:
@@ -58,15 +61,15 @@ func _right():
 	elapse = 0.0
 
 func init(left_h, right_h, which_h, type):
-	self.connect("game_over", get_node("/root/Node2D"), "game_over")
+	self.connect("game_over", get_node("/root/GameManager"), "game_over")
 	ingred = get_node(type)
 	ingred_size = ingred.get_texture().get_size()*ingred.scale
 	left_hand = left_h
 	right_hand = right_h
 	left_hand_size = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").frames.get_frame("Idle", 0).get_size()
 	right_hand_size = right_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").frames.get_frame("Idle", 0).get_size()
-	left_hand_rect = Rect2(left_hand.position - left_hand_size/2, left_hand_size)
-	right_hand_rect = Rect2(right_hand.position - right_hand_size/2, right_hand_size)
+	left_hand_rect = Rect2(left_hand.position - left_hand_size, left_hand_size*2)
+	right_hand_rect = Rect2(right_hand.position - right_hand_size, right_hand_size*2)
 	ingred.visible = true
 	which_hand = which_h
 	if which_hand == "left":

@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://rightHandAnimatedSprite.tscn" type="PackedScene" id=3]
-[ext_resource path="res://leftHandAnimatedSprite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://rightHandAnimatedSprite.tscn" type="PackedScene" id=2]
+[ext_resource path="res://leftHandAnimatedSprite.tscn" type="PackedScene" id=3]
 
 [node name="player" type="Node2D"]
 
@@ -15,38 +14,24 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 324.573, 570.183 )
 _sections_unfolded = [ "Material", "Transform" ]
 
-[node name="Sprite" type="Sprite" parent="left_detector" index="0"]
-
-visible = false
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
-
 [node name="right_detector" type="Node2D" parent="." index="1"]
 
 position = Vector2( 899.017, 570.633 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="Sprite" type="Sprite" parent="right_detector" index="0"]
-
-visible = false
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="right_hand" type="Node2D" parent="." index="2"]
 
 position = Vector2( 894, 568 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="leftHandAnimatedSprite" parent="right_hand" index="0" instance=ExtResource( 3 )]
+[node name="leftHandAnimatedSprite" parent="right_hand" index="0" instance=ExtResource( 2 )]
 
 [node name="left_hand" type="Node2D" parent="." index="3"]
 
 position = Vector2( 324, 566 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="leftHandAnimatedSprite" parent="left_hand" index="0" instance=ExtResource( 4 )]
+[node name="leftHandAnimatedSprite" parent="left_hand" index="0" instance=ExtResource( 3 )]
 
 _sections_unfolded = [ "Transform" ]
 
