@@ -74,6 +74,4 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
 
 [node name="clap" parent="." index="4" instance=ExtResource( 8 )]
 
-[connection signal="grab_food" from="." to="static/player" method="_on_Node2D_grab_food" binds= [ "", "" ]]
-
 

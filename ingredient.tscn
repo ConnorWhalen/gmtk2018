@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ingredient.gd" type="Script" id=1]
 [ext_resource path="res://resources/ingredients/breadItem.png" type="Texture" id=2]
+[ext_resource path="res://resources/ingredients/hamItem.png" type="Texture" id=3]
+[ext_resource path="res://resources/ingredients/sauceItem.png" type="Texture" id=4]
 
 [node name="ingredient" type="Node2D"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Visibility" ]
+_sections_unfolded = [ "Z Index" ]
 
 [node name="BREAD" type="Sprite" parent="." index="0"]
 
@@ -17,9 +19,11 @@ _sections_unfolded = [ "Visibility" ]
 [node name="HAM" type="Sprite" parent="." index="1"]
 
 visible = false
+texture = ExtResource( 3 )
 
 [node name="SAUCE" type="Sprite" parent="." index="2"]
 
 visible = false
+texture = ExtResource( 4 )
 
 

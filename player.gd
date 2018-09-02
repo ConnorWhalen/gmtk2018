@@ -8,6 +8,8 @@ const ZOOM_SCALE_LEFT = Vector2(2, 2)
 const ZOOM_SCALE_RIGHT = Vector2(-2, 2)
 const ZOOM_LENGTH = 60
 
+signal grab_food(food, which_hand)
+
 var initial_position
 var left_hand
 var right_hand
@@ -27,7 +29,7 @@ var zoom_translate_delta
 
 func _ready():
 	self.position = START_POSITION
-	pass
+	get_node("../..").connect("grab_food", self, "_grab_food")
 
 func _process(delta):
 	if sliding_in:
@@ -67,15 +69,18 @@ func _process(delta):
 
 func init(position):
 	initial_position = position
+	self.connect("grab_food" ,self, "_grab_food")
 	left_hand = get_node("left_hand")
 	right_hand = get_node("right_hand")
 
 func location():
 	return self.position - initial_position
 
-func _on_Node2D_grab_food(food, which_hand):
+func _grab_food(food, which_hand):
+	print(food, which_hand)
 	var new_food = ingredient.instance()
-	new_food._init(left_hand, right_hand, which_hand, food)
+	self.add_child(new_food)
+	new_food.init(left_hand, right_hand, which_hand, food)
 
 func slide_in():
 	sliding_in = true

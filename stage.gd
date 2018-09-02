@@ -1,7 +1,7 @@
 extends Node2D
 
 signal clap_sample
-signal grab_food
+signal grab_food(a, b)
 
 const SCROLL_SPEED = 300
 const PLAYER_BUFFER_LEFT = 200
