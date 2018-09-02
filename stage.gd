@@ -3,6 +3,8 @@ extends Node2D
 
 signal clap_sample
 signal grab_food(a, b)
+signal win_screen
+signal sandwich_done
 
 const SCROLL_SPEED = 300
 const PLAYER_BUFFER_LEFT = 200
@@ -18,10 +20,11 @@ var left_throw_timer
 var right_throw_timer
 
 var playing = false
+var slide_sandwich = false
 
 func _ready():
 	var stage_file = File.new()
-	stage_file.open("res://1.stage", File.READ)
+	stage_file.open("res://3.stage", File.READ)
 
 	var checklist_items_count = int(stage_file.get_line())
 	var checklist_items = []
@@ -157,8 +160,12 @@ func collect_food(food, player, which_h):
 	if checklist.complete():
 		player.zoom()
 
+func _win_screen():
+	playing = false
+	get_node("static/sandwich").slide_in()
 
-
+func sandwich_done():
+	
 func resume_idle_left():
 	var left = get_node("static/player/left_hand/leftHandAnimatedSprite/AnimatedSprite")
 	left.play("Idle")
@@ -166,4 +173,3 @@ func resume_idle_left():
 func resume_idle_right():
 	var right = get_node("static/player/right_hand/leftHandAnimatedSprite/AnimatedSprite")
 	right.play("Idle")
-	
