@@ -35,8 +35,7 @@ func _process(delta):
 		self._left()
 	var right_check = right_hand_rect.has_point(self.position)
 	var right_juggle = Input.is_action_just_pressed("right_juggle")
-	var right_hand_ready = right_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
-	if right_check and right_juggle and elapse>1.2 and right_hand_ready:
+	if right_check and right_juggle and elapse>1.2: 
 		self._right()
 
 func _left():
