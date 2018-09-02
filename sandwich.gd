@@ -8,7 +8,7 @@ var sliding = false
 var remaining_slide
 
 func _ready():
-	self.connect("siandwich_done", get_node("../.."), "_sandwich_done")
+	self.connect("sandwich_done", get_node("../.."), "_sandwich_done")
 
 func _process(delta):
 	if sliding:

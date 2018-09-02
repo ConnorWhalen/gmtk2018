@@ -21,10 +21,11 @@ var right_throw_timer
 
 var playing = false
 var slide_sandwich = false
+var win_text
 
 func _ready():
 	var stage_file = File.new()
-	stage_file.open("res://3.stage", File.READ)
+	stage_file.open("res://2.stage", File.READ)
 
 	var checklist_items_count = int(stage_file.get_line())
 	var checklist_items = []
@@ -55,6 +56,8 @@ func _ready():
 
 	var song = stage_file.get_line()
 	get_node("song").init(song)
+
+	win_text = stage_file.get_line()
 
 	screen_size = get_viewport_rect().size
 
@@ -164,8 +167,11 @@ func _win_screen():
 	playing = false
 	get_node("static/sandwich").slide_in()
 
-func sandwich_done():
-	
+func _sandwich_done():
+	var text = get_node("static/" + win_text)
+	print(text.position)
+	text.visible = true
+	text.recreateTextLabels()
 
 func game_over():
 	print("oh no")

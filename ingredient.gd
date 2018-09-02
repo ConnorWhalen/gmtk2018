@@ -34,8 +34,7 @@ func _process(delta):
 	self.position = path.interpolate(whole, fractional)
 	var left_check = left_hand_rect.has_point(self.position)
 	var left_juggle = Input.is_action_just_pressed("left_juggle")
-	var left_hand_ready = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
-	if left_check and left_juggle and elapse>1.2 and left_hand_ready:
+	if left_check and left_juggle and elapse>1.2:
 		self._left()
 	var right_check = right_hand_rect.has_point(self.position)
 	var right_juggle = Input.is_action_just_pressed("right_juggle")
