@@ -10,7 +10,6 @@ func _process(delta):
 	pass
 
 func size():
-	print(ingredient.get_texture())
 	return ingredient.get_texture().get_size()
 
 func reveal():
