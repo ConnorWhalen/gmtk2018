@@ -6,7 +6,7 @@ signal grab_food(a, b)
 const SCROLL_SPEED = 300
 const PLAYER_BUFFER_LEFT = 200
 const PLAYER_BUFFER_RIGHT = 300
-const PLAYER_BUFFER_UP = 500
+const PLAYER_BUFFER_UP = 400
 const PLAYER_BUFFER_BOTTOM = 0
 
 var screen_size

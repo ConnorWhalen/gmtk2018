@@ -14,7 +14,7 @@ _sections_unfolded = [ "Z Index" ]
 
 visible = false
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="HAM" type="Sprite" parent="." index="1"]
 

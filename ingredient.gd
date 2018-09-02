@@ -62,8 +62,6 @@ func init(left_h, right_h, which_h, type):
 		self.position = right_hand.position
 		path = self._generate_path(left_hand.position)
 
-	
-
 func _generate_path(new_location):
 	var new_path = Curve2D.new()
 	var height = 300.0 + 300.0*(randf() - 0.5)

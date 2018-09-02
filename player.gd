@@ -14,6 +14,8 @@ var initial_position
 var left_hand
 var right_hand
 
+var ingredients = []
+
 var sliding_in = false
 var slide_in_increment = 450
 
@@ -42,6 +44,8 @@ func _process(delta):
 	if zooming:
 		left_hand.get_child(0).scale += zoom_scale_left_delta * delta
 		right_hand.get_child(0).scale += zoom_scale_right_delta * delta
+		for ingredient in ingredients:
+			ingredient.ingred.scale += zoom_scale_left_delta * delta * 0.5
 
 		if (left_hand_cw):
 			left_hand.get_child(0).rotation_degrees += angle_increment * delta
@@ -66,6 +70,8 @@ func _process(delta):
 		remaining_zoom -= delta
 		if remaining_zoom < 0:
 			zooming = false
+			print(ingredients[0].ingred.scale)
+			print(left_hand.get_child(0).scale)
 
 func init(position):
 	initial_position = position
@@ -80,6 +86,7 @@ func _grab_food(food, which_hand):
 	print(food, which_hand)
 	var new_food = ingredient.instance()
 	self.add_child(new_food)
+	ingredients.append(new_food)
 	new_food.init(left_hand, right_hand, which_hand, food)
 
 func slide_in():
