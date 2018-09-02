@@ -15,10 +15,9 @@ animations = [ {
 "name": "Idle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": true,
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": false,
 "name": "Throw",
-"speed": 12.0
+"speed": 40.0
 } ]
-_sections_unfolded = [ "Resource" ]
 
