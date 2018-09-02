@@ -107,12 +107,12 @@ func _process(delta):
 		if (Input.is_action_just_pressed("left_select")):
 			var food = cupboard_manager.select_left(checklist.current_item())
 			if (food):
-				collect_food(food, player)
+				collect_food(food, player, "left")
 
 		if (Input.is_action_just_pressed("right_select")):
 			var food = cupboard_manager.select_right(checklist.current_item())
 			if (food):
-				collect_food(food, player)
+				collect_food(food, player, "right")
 	else:
 		if camera.done_scan():
 			cupboard_manager.close_all()
@@ -120,9 +120,9 @@ func _process(delta):
 			player.slide_in()
 
 
-func collect_food(food, player):
+func collect_food(food, player, which_h):
 	emit_signal("clap_sample")
-	emit_signal("grab_food", food, "left")
+	emit_signal("grab_food", food, which_h)
 	checklist.check()
 	if checklist.complete():
 		player.zoom()

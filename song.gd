@@ -1,5 +1,6 @@
 extends AudioStreamPlayer
 
+export var songname = "clap00.ogg"
 var song_time
 
 func _ready():
