@@ -5,7 +5,7 @@
 [ext_resource path="res://wobblyText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/another_one.ogg" type="AudioStream" id=4]
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -41,7 +41,7 @@ stretch_mode = 0
 
 [node name="pressStartText" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 200, 300 )
+position = Vector2( 180.319, 297.685 )
 _sections_unfolded = [ "Transform" ]
 completeText = "Press ENTER or START to continue"
 
