@@ -1,5 +1,6 @@
 extends Node2D
 
+signal game_over
 
 var right_hand
 var left_hand
@@ -22,21 +23,19 @@ func _ready():
 func _process(delta):
 	elapse += delta
 	interp_value = 2.0/2.4 * elapse
-	if elapse > 2.8:
-		pass
+	if elapse > 3.0:
+		emit_signal("game_over")
 	whole = floor(interp_value)
 	fractional = fmod(interp_value, 1.0)
 	self.position = path.interpolate(whole, fractional)
 	var left_check = left_hand_rect.has_point(self.position)
 	var left_juggle = Input.is_action_just_pressed("left_juggle")
-	print(left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite"))
 	var left_hand_ready = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
 	if left_check and left_juggle and elapse>1.2 and left_hand_ready:
 		self._left()
 	var right_check = right_hand_rect.has_point(self.position)
 	var right_juggle = Input.is_action_just_pressed("right_juggle")
-	var right_hand_ready = right_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
-	if right_check and right_juggle and elapse>1.2 and right_hand_ready:
+	if right_check and right_juggle and elapse>1.2: 
 		self._right()
 
 func _left():
@@ -48,6 +47,7 @@ func _right():
 	elapse = 0.0
 
 func init(left_h, right_h, which_h, type):
+	self.connect("game_over", get_node("/root/Node2D"), "game_over")
 	ingred = get_node(type)
 	ingred_size = ingred.get_texture().get_size()*ingred.scale
 	left_hand = left_h
@@ -82,3 +82,5 @@ func _generate_path(new_location):
 		new_path.add_point(new_location, Vector2(0.0, -height_control), Vector2(0.0, height_control))
 		new_path.add_point(Vector2(new_location.x - 100, 2000.0))
 	return new_path
+	
+

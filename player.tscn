@@ -5,7 +5,7 @@
 [ext_resource path="res://rightHandAnimatedSprite.tscn" type="PackedScene" id=3]
 [ext_resource path="res://leftHandAnimatedSprite.tscn" type="PackedScene" id=4]
 
-[node name="player" type="Node2D"]
+[node name="player" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -17,7 +17,6 @@ _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="left_detector" index="0"]
 
-visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
@@ -29,7 +28,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="right_detector" index="0"]
 
-visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
