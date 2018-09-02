@@ -14,6 +14,8 @@ const PLAYER_BUFFER_RIGHT = 300
 const PLAYER_BUFFER_UP = 400
 const PLAYER_BUFFER_BOTTOM = 0
 
+export var stageToLoad = "res://1.stage"
+
 var screen_size
 var checklist
 var cupboard_manager
@@ -30,7 +32,7 @@ var win_text
 
 func _ready():
 	var stage_file = File.new()
-	stage_file.open("res://2.stage", File.READ)
+	stage_file.open(stageToLoad, File.READ)
 
 	var checklist_items_count = int(stage_file.get_line())
 	var checklist_items = []
