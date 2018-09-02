@@ -17,7 +17,6 @@
 [node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
-stageToLoad = "res://1.stage"
 
 [node name="scrolling" type="Node2D" parent="." index="0"]
 
@@ -96,6 +95,15 @@ scale = Vector2( 2, 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 completeText = "Press Enter or Start"
 
+[node name="game_over" parent="static" index="7" instance=ExtResource( 8 )]
+
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 170, 20 )
+scale = Vector2( 2, 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+completeText = "GAME OVER!"
+
 [node name="camera" type="Camera2D" parent="." index="2"]
 
 anchor_mode = 1
@@ -130,5 +138,4 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
 [node name="miss" parent="." index="5" instance=ExtResource( 12 )]
 
 script = ExtResource( 13 )
-
 
