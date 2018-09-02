@@ -51,23 +51,23 @@ func _process(delta):
 		for ingredient in ingredients:
 			ingredient.ingred.scale += zoom_scale_left_delta * delta * 0.5
 
-		if (left_hand_cw):
-			left_hand.get_child(0).rotation_degrees += angle_increment * delta
-			if left_hand.get_child(0).rotation_degrees > angle_threshold:
-				left_hand_cw = false
-		else:
-			left_hand.get_child(0).rotation_degrees -= angle_increment * delta
-			if left_hand.get_child(0).rotation_degrees < -angle_threshold:
-				left_hand_cw = true
+		# if (left_hand_cw):
+		# 	left_hand.get_child(0).rotation_degrees += angle_increment * delta
+		# 	if left_hand.get_child(0).rotation_degrees > angle_threshold:
+		# 		left_hand_cw = false
+		# else:
+		# 	left_hand.get_child(0).rotation_degrees -= angle_increment * delta
+		# 	if left_hand.get_child(0).rotation_degrees < -angle_threshold:
+		# 		left_hand_cw = true
 
-		if (right_hand_cw):
-			right_hand.get_child(0).rotation_degrees += angle_increment * delta
-			if right_hand.get_child(0).rotation_degrees > angle_threshold:
-				right_hand_cw = false
-		else:
-			right_hand.get_child(0).rotation_degrees -= angle_increment * delta
-			if right_hand.get_child(0).rotation_degrees < -angle_threshold:
-				right_hand_cw = true
+		# if (right_hand_cw):
+		# 	right_hand.get_child(0).rotation_degrees += angle_increment * delta
+		# 	if right_hand.get_child(0).rotation_degrees > angle_threshold:
+		# 		right_hand_cw = false
+		# else:
+		# 	right_hand.get_child(0).rotation_degrees -= angle_increment * delta
+		# 	if right_hand.get_child(0).rotation_degrees < -angle_threshold:
+		# 		right_hand_cw = true
 
 		self.position += zoom_translate_delta * delta
 
