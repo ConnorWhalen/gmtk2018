@@ -1,6 +1,5 @@
 extends Node
 
-signal game_over
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
@@ -23,7 +22,7 @@ func on_pass_title():
 	currentScene = gameScene.instance()
 	self.add_child(currentScene)
 
-func game_over():
+func on_game_over():
 	print("oh no")
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
