@@ -34,3 +34,17 @@ func _process(delta):
 		childNumber += 1
 	if wobbleTimer >= WOBBLE_RESET_TIME: wobbleTimer = 0
 	pass
+
+func recreateTextLabels():
+	# Can optimize later but this is easiest for now
+	for child in self.get_children():
+		self.remove_child(child)
+	var charIdx = 0
+	for currentChar in completeText:
+		var newChild = Label.new()
+		newChild.text = currentChar
+		newChild.rect_position.x += self.position.x + horizontalSpacing*charIdx
+		newChild.rect_position.y = self.position.y
+		self.add_child(newChild)
+		charIdx += 1	
+	pass

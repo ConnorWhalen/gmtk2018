@@ -20,6 +20,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Hint", "Margin", "Material", "Rect", "Visibility" ]
 
 [node name="TextureRect" type="TextureRect" parent="." index="0"]
 
@@ -42,7 +43,7 @@ stretch_mode = 0
 
 position = Vector2( 200, 300 )
 _sections_unfolded = [ "Transform" ]
-completeText = "Press any button to continue"
+completeText = "Press ENTER or START to continue"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
 
