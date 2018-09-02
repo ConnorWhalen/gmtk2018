@@ -6,6 +6,7 @@ extends Node
 export(PackedScene) var initialScene
 
 onready var currentScene = initialScene.instance()
+onready var controlsScene = preload("res://ControlsExplanation.tscn").instance()
 onready var gameScene = preload("res://stage.tscn")
 
 func _ready():
@@ -19,10 +20,20 @@ func _ready():
 
 func on_pass_title():
 	self.remove_child(currentScene)
+	currentScene = controlsScene
+	self.add_child(currentScene)
+	currentScene.connect("controlsAcknowledged", self, "on_pass_controls")
+	
+func on_pass_controls():
+	self.remove_child(currentScene)
 	currentScene = gameScene.instance()
 	self.add_child(currentScene)
+	
 
 func on_game_over():
+	self.remove_child(currentScene)
+	currentScene = gameScene.instance()
+	self.add_child(currentScene)
 	print("oh no")
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
