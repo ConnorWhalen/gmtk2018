@@ -74,8 +74,8 @@ func init(left_h, right_h, which_h, type):
 	right_hand = right_h
 	left_hand_size = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").frames.get_frame("Idle", 0).get_size()
 	right_hand_size = right_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").frames.get_frame("Idle", 0).get_size()
-	left_hand_rect = Rect2(left_hand.position - 0.5*left_hand_size, left_hand_size)
-	right_hand_rect = Rect2(right_hand.position - 0.5*right_hand_size, right_hand_size)
+	left_hand_rect = Rect2(left_hand.position - left_hand_size, 2.0*left_hand_size)
+	right_hand_rect = Rect2(right_hand.position - right_hand_size, 2.0*right_hand_size)
 	ingred.visible = true
 	which_hand = which_h
 	if which_hand == "left":
