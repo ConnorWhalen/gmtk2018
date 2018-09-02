@@ -20,9 +20,8 @@ func init(position, type_):
 	rect = Rect2(position - rect_size*0.5, rect_size)
 	type = type_
 	ingredient = get_node("ingredient/" + type)
-	self.close()
 	has_item = true
-	closed = true
+	self.open()
 	shut_timer = Timer.new()
 	shut_timer.one_shot = true
 	shut_timer.wait_time = 1

@@ -63,3 +63,7 @@ func select_right(type):
 	if right_highlighted != null:
 		return self.get_children()[right_highlighted].select(type)
 	return false
+
+func close_all():
+	for cupboard in self.get_children():
+		cupboard.close()
