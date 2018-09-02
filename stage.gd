@@ -6,12 +6,15 @@ signal grab_food(a, b)
 signal win_screen
 signal sandwich_done
 signal stage_win
+signal stage_lose
 
 const SCROLL_SPEED = 300
 const PLAYER_BUFFER_LEFT = 200
 const PLAYER_BUFFER_RIGHT = 300
 const PLAYER_BUFFER_UP = 400
 const PLAYER_BUFFER_BOTTOM = 0
+
+export var stageToLoad = "res://1.stage"
 
 var screen_size
 var checklist
@@ -23,12 +26,13 @@ var right_throw_timer
 var scan_done = false
 var playing = false
 var slide_sandwich = false
-var complete = false
+var complete_win = false
+var complete_lose = false
 var win_text
 
 func _ready():
 	var stage_file = File.new()
-	stage_file.open("res://2.stage", File.READ)
+	stage_file.open(stageToLoad, File.READ)
 
 	var checklist_items_count = int(stage_file.get_line())
 	var checklist_items = []
@@ -157,10 +161,14 @@ func _process(delta):
 			playing = true
 			scan_done = true
 			player.slide_in()
-	elif complete:
+	elif complete_win:
 		if (Input.is_action_pressed("accept_start")):
 			emit_signal("stage_win")
 			print("STAGE_WIN")
+	elif complete_lose:
+		if (Input.is_action_pressed("accept_start")):
+			emit_signal("stage_lose")
+			print("STAGE_LOSE")
 
 
 func collect_food(food, player, which_h):
@@ -172,17 +180,20 @@ func collect_food(food, player, which_h):
 
 func _win_screen():
 	playing = false
-	complete = true
+	complete_win = true
 	get_node("static/sandwich").slide_in()
 
 func _sandwich_done():
 	var text = get_node("static/" + win_text)
-	print(text.position)
 	text.visible = true
-	text.recreateTextLabels()
+	get_node("static/press_start").visible = true
 
 func game_over():
-	print("oh no")
+	playing = false
+	complete_lose = true
+	var text = get_node("static/game_over")
+	text.visible = true
+	get_node("static/press_start").visible = true
 
 func resume_idle_left():
 	var left = get_node("static/player/left_hand/leftHandAnimatedSprite/AnimatedSprite")

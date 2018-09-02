@@ -21,6 +21,7 @@ var first_time = true
 var exiting = false
 var done = false
 var done_timer
+var processing = true
 
 var angle_increment = 360
 
@@ -28,12 +29,14 @@ func _ready():
 	elapse = 0.0
 
 func _process(delta):
+<<<<<<< HEAD
 	elapse += delta
 	interp_value = 2.0/2.4 * elapse
 	if elapse > 3.0:
 		if first_time:
 			emit_signal("game_over")
 			first_time = false
+			processing = false
 	whole = floor(interp_value)
 	fractional = fmod(interp_value, 1.0)
 	self.position = path.interpolate(whole, fractional)
@@ -64,7 +67,7 @@ func _right():
 	elapse = 0.0
 
 func init(left_h, right_h, which_h, type):
-	self.connect("game_over", get_node("/root/GameManager"), "on_game_over")
+	self.connect("game_over", get_node("/root/GameManager").get_child(0), "game_over")
 	ingred = get_node(type)
 	ingred_size = ingred.get_texture().get_size()*ingred.scale
 	left_hand = left_h
