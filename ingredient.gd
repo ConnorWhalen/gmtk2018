@@ -28,13 +28,14 @@ func _process(delta):
 	fractional = fmod(interp_value, 1.0)
 	self.position = path.interpolate(whole, fractional)
 	var left_check = left_hand_rect.has_point(self.position)
-	var left_juggle = Input.is_action_just_pressed("left_select")
-	var left_hand_ready = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprit").Animation == "Idle"
+	var left_juggle = Input.is_action_just_pressed("left_juggle")
+	print(left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite"))
+	var left_hand_ready = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
 	if left_check and left_juggle and elapse>1.2 and left_hand_ready:
 		self._left()
 	var right_check = right_hand_rect.has_point(self.position)
-	var right_juggle = Input.is_action_just_pressed("right_select")
-	var right_hand_ready = right_hand.get_node("leftHandAnimatedSprite/AnimatedSprit").Animation == "Idle"
+	var right_juggle = Input.is_action_just_pressed("right_juggle")
+	var right_hand_ready = right_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
 	if right_check and right_juggle and elapse>1.2 and right_hand_ready:
 		self._right()
 
