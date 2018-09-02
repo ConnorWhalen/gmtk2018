@@ -83,8 +83,6 @@ func _process(delta):
 		for ingredient in ingredients:
 			if ingredient.is_done() == false:
 				done = false
-		if Input.is_action_just_pressed("win"):
-			done = true
 		if done:
 			emit_signal("win_screen")
 			check_done = false
