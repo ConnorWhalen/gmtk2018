@@ -38,13 +38,6 @@ func _process(delta):
 	var left_check = left_hand_rect.has_point(self.position)
 	var left_juggle = Input.is_action_just_pressed("left_juggle")
 	var left_hand_ready = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
-	if left_juggle:
-		print("top_let: ", left_hand_rect.position, 
-		      "bottom_right: ", left_hand_rect.position + left_hand_rect.size, 
-			  "position: ", self.position,
-			  "got it: ", left_check,
-			  "left_hand_ready: ", left_hand_ready)
-	var left_hand_ready = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
 	if left_check and left_juggle and elapse>1.2:
 		self._left()
 	var right_check = right_hand_rect.has_point(self.position)
