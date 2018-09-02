@@ -83,7 +83,6 @@ func location():
 	return self.position - initial_position
 
 func _grab_food(food, which_hand):
-	print(food, which_hand)
 	var new_food = ingredient.instance()
 	self.add_child(new_food)
 	ingredients.append(new_food)

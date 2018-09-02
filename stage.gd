@@ -1,5 +1,6 @@
 extends Node2D
 
+signal game_over
 signal clap_sample
 signal grab_food(a, b)
 
@@ -129,3 +130,6 @@ func collect_food(food, player, which_h):
 	checklist.check()
 	if checklist.complete():
 		player.zoom()
+		
+func game_over():
+	print("oh no")
