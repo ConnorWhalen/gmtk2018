@@ -14,6 +14,25 @@ var checklist
 var cupboard_manager
 
 func _ready():
+	var stage_file = File.new()
+	stage_file.open("res://2.stage", File.READ)
+
+	var checklist_items_count = int(stage_file.get_line())
+	var checklist_items = []
+	for i in range(checklist_items_count):
+		checklist_items.append(stage_file.get_line())
+
+	var cupboard_count = int(stage_file.get_line())
+	var cupboard_positions = []
+	for i in range(cupboard_count):
+		var x = stage_file.get_line()
+		var y = stage_file.get_line()
+		cupboard_positions.append(Vector2(x, y))
+
+	var cupboard_items = []
+	for i in range(cupboard_count):
+		cupboard_items.append(stage_file.get_line())
+
 	screen_size = get_viewport_rect().size
 
 	var background = get_node("scrolling/background")
@@ -32,14 +51,12 @@ func _ready():
 	player.init(player.position)
 
 	checklist = get_node("static/checklist")
-	checklist.init(["BREAD", "HAM", "SAUCE", "BREAD"])
+	checklist.init(checklist_items)
 
 	cupboard_manager = get_node("scrolling/cupboard_manager")
 	cupboard_manager.init(
-		[Vector2(-100, 0), Vector2(400, 0), Vector2(900, 0), Vector2(1400, 0),
-		 Vector2(-100, 300), Vector2(400, 300), Vector2(900, 300), Vector2(1400, 300)],
-		["HAM", "BREAD", "SAUCE", "HAM",
-		 "BREAD", "SAUCE", "BREAD", "BREAD"],
+		cupboard_positions,
+		cupboard_items,
 		get_node("static/player/left_detector"),
 		get_node("static/player/right_detector"),
 		camera,
