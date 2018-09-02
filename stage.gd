@@ -44,7 +44,7 @@ func _ready():
 
 	var scan_lengths = []
 	for i in range(scan_point_count-1):
-		scan_lengths.append(int(stage_file.get_line()))
+		scan_lengths.append(float(stage_file.get_line()))
 
 	screen_size = get_viewport_rect().size
 

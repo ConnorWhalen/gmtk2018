@@ -6,7 +6,7 @@ const SLIDE_IN_POSITION = Vector2(0, 0)
 
 const ZOOM_SCALE_LEFT = Vector2(2, 2)
 const ZOOM_SCALE_RIGHT = Vector2(-2, 2)
-const ZOOM_LENGTH = 60
+const ZOOM_LENGTH = 2
 
 signal grab_food(food, which_hand)
 
@@ -15,13 +15,13 @@ var left_hand
 var right_hand
 
 var sliding_in = false
-var slide_in_increment = 15
+var slide_in_increment = 450
 
 var zooming = false
 var remaining_zoom
 var left_hand_cw = true
 var right_hand_cw = false
-var angle_increment = 6
+var angle_increment = 360
 var angle_threshold = 1
 var zoom_scale_left_delta
 var zoom_scale_right_delta
@@ -33,38 +33,38 @@ func _ready():
 
 func _process(delta):
 	if sliding_in:
-		self.position.y -= slide_in_increment
-		slide_in_increment -= 0.35
+		self.position.y -= slide_in_increment * delta
+		slide_in_increment -= 325 * delta
 		if self.position.y < SLIDE_IN_POSITION.y:
 			self.position.y = SLIDE_IN_POSITION.y
 			sliding_in = false
 
 	if zooming:
-		left_hand.get_child(0).scale += zoom_scale_left_delta
-		right_hand.get_child(0).scale += zoom_scale_right_delta
+		left_hand.get_child(0).scale += zoom_scale_left_delta * delta
+		right_hand.get_child(0).scale += zoom_scale_right_delta * delta
 
 		if (left_hand_cw):
-			left_hand.get_child(0).rotation_degrees += angle_increment
+			left_hand.get_child(0).rotation_degrees += angle_increment * delta
 			if left_hand.get_child(0).rotation_degrees > angle_threshold:
 				left_hand_cw = false
 		else:
-			left_hand.get_child(0).rotation_degrees -= angle_increment
+			left_hand.get_child(0).rotation_degrees -= angle_increment * delta
 			if left_hand.get_child(0).rotation_degrees < -angle_threshold:
 				left_hand_cw = true
 
 		if (right_hand_cw):
-			right_hand.get_child(0).rotation_degrees += angle_increment
+			right_hand.get_child(0).rotation_degrees += angle_increment * delta
 			if right_hand.get_child(0).rotation_degrees > angle_threshold:
 				right_hand_cw = false
 		else:
-			right_hand.get_child(0).rotation_degrees -= angle_increment
+			right_hand.get_child(0).rotation_degrees -= angle_increment * delta
 			if right_hand.get_child(0).rotation_degrees < -angle_threshold:
 				right_hand_cw = true
 
-		self.position += zoom_translate_delta
+		self.position += zoom_translate_delta * delta
 
-		remaining_zoom -= 1
-		if remaining_zoom == 0:
+		remaining_zoom -= delta
+		if remaining_zoom < 0:
 			zooming = false
 
 func init(position):

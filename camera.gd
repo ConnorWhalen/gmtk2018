@@ -15,9 +15,9 @@ func _ready():
 
 func _process(delta):
 	if scanning:
-		self.position += scan_increment
-		scan_time -= 1
-		if scan_time == 0:
+		self.position += scan_increment * delta
+		scan_time -= delta
+		if scan_time < 0:
 			scan_point += 1
 			if scan_point == scan_points-1:
 				scanning = false
