@@ -81,7 +81,7 @@ func _ready():
 func _process(delta):
 	var camera = get_node("camera")
 	var player = get_node("static/player")
-	
+		
 	if playing:
 		if Input.is_action_pressed("scroll_left"):
 			if player.position.x > -PLAYER_BUFFER_LEFT:
@@ -115,7 +115,37 @@ func _process(delta):
 		if (Input.is_action_just_pressed("right_select")):
 			var food = cupboard_manager.select_right(checklist.current_item())
 			if (food):
+<<<<<<< Updated upstream
 				collect_food(food, player, "right")
+=======
+				collect_food(food, player)
+
+		if (Input.is_action_just_pressed("left_juggle")):
+			var left = player.get_node("left_hand/leftHandAnimatedSprite/AnimatedSprite")
+			left.play("Throw")
+			var t = Timer.new()
+			t.set_wait_time(0.275)
+			t.set_one_shot(true)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			t.queue_free()
+			left.play("Idle")
+
+		if (Input.is_action_just_pressed("right_juggle")):
+			var right = player.get_node("right_hand/leftHandAnimatedSprite/AnimatedSprite")
+			right.play("Throw")
+			var t = Timer.new()
+			t.set_wait_time(0.275)
+			t.set_one_shot(true)
+			self.add_child(t)
+			t.start()
+			yield(t, "timeout")
+			t.queue_free()
+#			while right.animation = "Throw"			
+			right.play("Idle")
+			
+>>>>>>> Stashed changes
 	else:
 		if camera.done_scan():
 			cupboard_manager.close_all()
