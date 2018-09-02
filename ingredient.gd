@@ -20,18 +20,19 @@ func _ready():
 	elapse = 0.0
 
 func _process(delta):
-	print(elapse)
 	elapse += delta
 	interp_value = 2.0/2.4 * elapse
+	if elapse > 2.8:
+		pass
 	whole = floor(interp_value)
 	fractional = fmod(interp_value, 1.0)
 	self.position = path.interpolate(whole, fractional)
 	var left_check = left_hand_rect.has_point(self.position)
-	var left_juggle = Input.is_action_just_pressed("left_juggle")
+	var left_juggle = Input.is_action_just_pressed("left_select")
 	if left_check and left_juggle and elapse>2.0:
 		self._left()
 	var right_check = right_hand_rect.has_point(self.position)
-	var right_juggle = Input.is_action_just_pressed("right_juggle")
+	var right_juggle = Input.is_action_just_pressed("right_select")
 	if right_check and right_juggle and elapse>2.0:
 		self._right()
 
@@ -40,7 +41,6 @@ func _left():
 	elapse = 0.0
 
 func _right():
-	print(left_hand.position)
 	path = self._generate_path(left_hand.position)
 	elapse = 0.0
 
