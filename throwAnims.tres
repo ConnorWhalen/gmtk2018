@@ -11,14 +11,14 @@
 
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 2 ) ],
-"loop": true,
+"loop": false,
 "name": "Idle",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": false,
+"loop": true,
 "name": "Throw",
-"speed": 40.0
+"speed": 20.0
 } ]
 _sections_unfolded = [ "Resource" ]
 

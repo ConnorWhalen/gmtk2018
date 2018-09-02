@@ -32,10 +32,11 @@ func _process(delta):
 	elapse += delta
 	interp_value = 2.0/2.4 * elapse
 	if elapse > 3.0:
-		if first_time:
-			emit_signal("game_over")
-			first_time = false
-			processing = false
+		if done == false:
+			if first_time:
+				emit_signal("game_over")
+				first_time = false
+				processing = false
 	whole = floor(interp_value)
 	fractional = fmod(interp_value, 1.0)
 	self.position = path.interpolate(whole, fractional)
