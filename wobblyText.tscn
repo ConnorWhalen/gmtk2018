@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://wobblyText.gd" type="Script" id=1]
+
+[node name="RichTextLabel" type="Node2D" index="0"]
+
+position = Vector2( 242.791, 104.021 )
+scale = Vector2( 1.13198, 1.06503 )
+script = ExtResource( 1 )
+completeText = "So long, gay Bowser"
+textSize = 5
+textMaxWobble = 5
+horizontalSpacing = 15
+
+
