@@ -16,6 +16,10 @@ var fractional
 var ingred
 var ingred_size
 
+var exiting = false
+var done = false
+var done_timer
+
 func _ready():
 	elapse = 0.0
 
@@ -29,7 +33,6 @@ func _process(delta):
 	self.position = path.interpolate(whole, fractional)
 	var left_check = left_hand_rect.has_point(self.position)
 	var left_juggle = Input.is_action_just_pressed("left_juggle")
-	print(left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite"))
 	var left_hand_ready = left_hand.get_node("leftHandAnimatedSprite/AnimatedSprite").animation == "Idle"
 	if left_check and left_juggle and elapse>1.2 and left_hand_ready:
 		self._left()
@@ -40,11 +43,19 @@ func _process(delta):
 		self._right()
 
 func _left():
-	path = self._generate_path(right_hand.position)
+	if !exiting:
+		path = self._generate_path(right_hand.position)
+	else:
+		path = self._exit_path()
+		done_timer.start()
 	elapse = 0.0
 
 func _right():
-	path = self._generate_path(left_hand.position)
+	if !exiting:
+		path = self._generate_path(left_hand.position)
+	else:
+		path = self._exit_path()
+		done_timer.start()
 	elapse = 0.0
 
 func init(left_h, right_h, which_h, type):
@@ -65,6 +76,13 @@ func init(left_h, right_h, which_h, type):
 		self.position = right_hand.position
 		path = self._generate_path(left_hand.position)
 
+	done_timer = Timer.new()
+	done_timer.one_shot = true
+	done_timer.wait_time = 1
+	add_child(done_timer)
+	done_timer.connect("timeout", self, "flag_done")
+
+
 func _generate_path(new_location):
 	var new_path = Curve2D.new()
 	var height = 300.0 + 300.0*(randf() - 0.5)
@@ -82,3 +100,20 @@ func _generate_path(new_location):
 		new_path.add_point(new_location, Vector2(0.0, -height_control), Vector2(0.0, height_control))
 		new_path.add_point(Vector2(new_location.x - 100, 2000.0))
 	return new_path
+
+func _exit_path():
+	var new_path = Curve2D.new()
+	new_path.add_point(Vector2(self.position.x, self.position.y-0))
+	new_path.add_point(Vector2(self.position.x, self.position.y-1000))
+	new_path.add_point(Vector2(self.position.x, self.position.y-1100))
+	new_path.add_point(Vector2(self.position.x, self.position.y-1200))
+	return new_path
+
+func flag_exit():
+	exiting = true
+
+func is_done():
+	return done
+
+func flag_done():
+	done = true

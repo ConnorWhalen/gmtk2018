@@ -9,6 +9,7 @@ const ZOOM_SCALE_RIGHT = Vector2(-2, 2)
 const ZOOM_LENGTH = 2
 
 signal grab_food(food, which_hand)
+signal win_screen
 
 var initial_position
 var left_hand
@@ -29,9 +30,12 @@ var zoom_scale_left_delta
 var zoom_scale_right_delta
 var zoom_translate_delta
 
+var check_done = false
+
 func _ready():
 	self.position = START_POSITION
 	get_node("../..").connect("grab_food", self, "_grab_food")
+	self.connect("win_screen", get_node("../.."), "_win_screen")
 
 func _process(delta):
 	if sliding_in:
@@ -70,8 +74,18 @@ func _process(delta):
 		remaining_zoom -= delta
 		if remaining_zoom < 0:
 			zooming = false
-			print(ingredients[0].ingred.scale)
-			print(left_hand.get_child(0).scale)
+			check_done = true
+			for ingredient in ingredients:
+				ingredient.flag_exit()
+
+	if check_done:
+		var done = true
+		for ingredient in ingredients:
+			if ingredient.is_done() == false:
+				done = false
+		if done:
+			emit_signal("win_screen")
+			check_done = false
 
 func init(position):
 	initial_position = position
@@ -83,7 +97,6 @@ func location():
 	return self.position - initial_position
 
 func _grab_food(food, which_hand):
-	print(food, which_hand)
 	var new_food = ingredient.instance()
 	self.add_child(new_food)
 	ingredients.append(new_food)
