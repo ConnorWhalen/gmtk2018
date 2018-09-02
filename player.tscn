@@ -17,7 +17,6 @@ _sections_unfolded = [ "Material", "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="left_detector" index="0"]
 
-visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Transform", "Visibility", "Z Index" ]
@@ -29,24 +28,27 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="right_detector" index="0"]
 
-visible = false
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="right_hand" type="Node2D" parent="." index="2"]
 
+position = Vector2( 895.196, 540.753 )
+_sections_unfolded = [ "Transform" ]
+
 [node name="Sprite" type="Sprite" parent="right_hand" index="0"]
 
-position = Vector2( 893.836, 567.905 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="left_hand" type="Node2D" parent="." index="3"]
 
+position = Vector2( 318.09, 533.937 )
+_sections_unfolded = [ "Transform" ]
+
 [node name="Sprite" type="Sprite" parent="left_hand" index="0"]
 
-position = Vector2( 323.634, 565.73 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 

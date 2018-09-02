@@ -33,6 +33,8 @@ _sections_unfolded = [ "Animation", "Transform", "Visibility" ]
 
 [node name="ingredient" type="Node2D" parent="." index="3"]
 
+editor/display_folded = true
+
 [node name="BREAD" type="Sprite" parent="ingredient" index="0"]
 
 visible = false
@@ -49,6 +51,6 @@ _sections_unfolded = [ "Visibility" ]
 
 visible = false
 texture = ExtResource( 7 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Visibility" ]
 
 

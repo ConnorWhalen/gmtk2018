@@ -1,6 +1,7 @@
 extends Node2D
 
 signal clap_sample
+signal grab_food
 
 const SCROLL_SPEED = 300
 const PLAYER_BUFFER_LEFT = 200
@@ -73,18 +74,20 @@ func _process(delta):
 			camera.position.y += SCROLL_SPEED * delta
 
 	if (Input.is_action_just_pressed("left_select")):
-		var success = cupboard_manager.select_left(checklist.current_item())
-		if (success):
+		var food = cupboard_manager.select_left(checklist.current_item())
+		if (food):
 			emit_signal("clap_sample")
+			emit_signal("grab_food", food, "left")
 			checklist.check()
 			if checklist.complete():
 				get_node("scrolling").visible = false
 
 
 	if (Input.is_action_just_pressed("right_select")):
-		var success = cupboard_manager.select_right(checklist.current_item())
-		if (success):
+		var food = cupboard_manager.select_right(checklist.current_item())
+		if (food):
 			emit_signal("clap_sample")
+			emit_signal("grab_food", food, "right")
 			checklist.check()
 			if checklist.complete():
 				get_node("scrolling").visible = false

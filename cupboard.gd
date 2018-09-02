@@ -1,5 +1,7 @@
 extends Node2D
 
+signal collect_food
+
 var has_item
 var closed
 var rect
@@ -37,8 +39,6 @@ func close():
 func collect():
 	has_item = false
 	ingredient.visible = false
-	return true
-	return false
 
 func highlight():
 	get_node("closed").scale = Vector2(0.6, 0.6)
@@ -59,5 +59,5 @@ func select(type_):
 		self.open()
 	elif has_item and type == type_:
 		self.collect()
-		return true
+		return type
 	return false

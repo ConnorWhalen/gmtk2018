@@ -9,7 +9,7 @@
 [ext_resource path="res://song.tscn" type="PackedScene" id=7]
 [ext_resource path="res://clap.tscn" type="PackedScene" id=8]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -73,5 +73,7 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Transform" ]
 [node name="song" parent="." index="3" instance=ExtResource( 7 )]
 
 [node name="clap" parent="." index="4" instance=ExtResource( 8 )]
+
+[connection signal="grab_food" from="." to="static/player" method="_on_Node2D_grab_food" binds= [ "", "" ]]
 
 
