@@ -46,6 +46,9 @@ func _ready():
 	for i in range(scan_point_count-1):
 		scan_lengths.append(float(stage_file.get_line()))
 
+	var song = stage_file.get_line()
+	get_node("song").init(song)
+
 	screen_size = get_viewport_rect().size
 
 	var background = get_node("scrolling/background")

@@ -75,10 +75,10 @@ func _generate_path(new_location):
 		new_path.add_point(self.position, Vector2(0.0, height_control), Vector2(0.0, -height_control))
 		new_path.add_point(half_point, Vector2(-control_distance, 0.0), Vector2(control_distance, 0.0))
 		new_path.add_point(new_location, Vector2(0.0, -height_control), Vector2(0.0, height_control))
-		new_path.add_point(Vector2(new_location.x + 100, 1000.0))
+		new_path.add_point(Vector2(new_location.x + 100, 2000.0))
 	else:
 		new_path.add_point(self.position, Vector2(0.0, height_control), Vector2(0.0, -height_control))
 		new_path.add_point(half_point, Vector2(control_distance, 0.0), Vector2(-control_distance, 0.0))
 		new_path.add_point(new_location, Vector2(0.0, -height_control), Vector2(0.0, height_control))
-		new_path.add_point(Vector2(new_location.x - 100, 1000.0))
+		new_path.add_point(Vector2(new_location.x - 100, 2000.0))
 	return new_path
