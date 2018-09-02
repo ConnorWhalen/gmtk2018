@@ -13,6 +13,9 @@ var screen_size
 var checklist
 var cupboard_manager
 
+var left_throw_timer
+var right_throw_timer
+
 var playing = false
 
 func _ready():
@@ -77,10 +80,24 @@ func _ready():
 		get_node("static/player/right_detector"),
 		camera,
 		player)
+		
+	left_throw_timer = Timer.new()
+	left_throw_timer.one_shot = true
+	left_throw_timer.wait_time = 0.275
+	add_child(left_throw_timer)
+	left_throw_timer.connect("timeout", self, "resume_idle_left")
+	
+	right_throw_timer = Timer.new()
+	right_throw_timer.one_shot = true
+	right_throw_timer.wait_time = 0.275
+	add_child(right_throw_timer)
+	right_throw_timer.connect("timeout", self, "resume_idle_right")
 
 func _process(delta):
 	var camera = get_node("camera")
 	var player = get_node("static/player")
+	var left = get_node("static/player/left_hand/leftHandAnimatedSprite/AnimatedSprite")
+	var right = get_node("static/player/right_hand/leftHandAnimatedSprite/AnimatedSprite")
 		
 	if playing:
 		if Input.is_action_pressed("scroll_left"):
@@ -115,37 +132,16 @@ func _process(delta):
 		if (Input.is_action_just_pressed("right_select")):
 			var food = cupboard_manager.select_right(checklist.current_item())
 			if (food):
-<<<<<<< Updated upstream
 				collect_food(food, player, "right")
-=======
-				collect_food(food, player)
 
-		if (Input.is_action_just_pressed("left_juggle")):
-			var left = player.get_node("left_hand/leftHandAnimatedSprite/AnimatedSprite")
+		if (Input.is_action_just_pressed("left_juggle") and left.animation != "Throw"):
 			left.play("Throw")
-			var t = Timer.new()
-			t.set_wait_time(0.275)
-			t.set_one_shot(true)
-			self.add_child(t)
-			t.start()
-			yield(t, "timeout")
-			t.queue_free()
-			left.play("Idle")
+			left_throw_timer.start()
 
-		if (Input.is_action_just_pressed("right_juggle")):
-			var right = player.get_node("right_hand/leftHandAnimatedSprite/AnimatedSprite")
+		if (Input.is_action_just_pressed("right_juggle") and right.animation != "Throw"):
 			right.play("Throw")
-			var t = Timer.new()
-			t.set_wait_time(0.275)
-			t.set_one_shot(true)
-			self.add_child(t)
-			t.start()
-			yield(t, "timeout")
-			t.queue_free()
-#			while right.animation = "Throw"			
-			right.play("Idle")
+			right_throw_timer.start()
 			
->>>>>>> Stashed changes
 	else:
 		if camera.done_scan():
 			cupboard_manager.close_all()
@@ -159,3 +155,12 @@ func collect_food(food, player, which_h):
 	checklist.check()
 	if checklist.complete():
 		player.zoom()
+
+func resume_idle_left():
+	var left = get_node("static/player/left_hand/leftHandAnimatedSprite/AnimatedSprite")
+	left.play("Idle")
+	
+func resume_idle_right():
+	var right = get_node("static/player/right_hand/leftHandAnimatedSprite/AnimatedSprite")
+	right.play("Idle")
+	
