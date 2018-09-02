@@ -39,6 +39,7 @@ func on_pass_controls():
 func on_stage_lose():
 	self.remove_child(currentScene)
 	currentScene = gameScene.instance()
+	currentScene.stageToLoad = currentStageString
 	reconnectStageSignals()
 	self.add_child(currentScene)
 	
@@ -47,6 +48,7 @@ func on_stage_win():
 	var nextScene = gameScene
 	if currentStage == 3:
 		currentStage = 1
+		currentStageString = "res://"+String(currentStage)+".stage"
 		nextScene = titleScene
 		currentScene = nextScene.instance()
 		currentScene.connect("buttonPressed", self, "on_pass_title")
