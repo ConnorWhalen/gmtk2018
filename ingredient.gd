@@ -17,6 +17,7 @@ var fractional
 var ingred
 var ingred_size
 
+var first_time = true
 var exiting = false
 var done = false
 var done_timer
@@ -30,7 +31,9 @@ func _process(delta):
 	elapse += delta
 	interp_value = 2.0/2.4 * elapse
 	if elapse > 3.0:
-		emit_signal("game_over")
+		if first_time:
+			emit_signal("game_over")
+			first_time = false
 	whole = floor(interp_value)
 	fractional = fmod(interp_value, 1.0)
 	self.position = path.interpolate(whole, fractional)
@@ -61,7 +64,7 @@ func _right():
 	elapse = 0.0
 
 func init(left_h, right_h, which_h, type):
-	self.connect("game_over", get_node("/root/GameManager"), "game_over")
+	self.connect("game_over", get_node("/root/GameManager"), "on_game_over")
 	ingred = get_node(type)
 	ingred_size = ingred.get_texture().get_size()*ingred.scale
 	left_hand = left_h

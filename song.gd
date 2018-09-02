@@ -1,6 +1,5 @@
 extends AudioStreamPlayer
 
-export var songname = "clap00.ogg"
 var song_time
 var track
 
@@ -16,3 +15,6 @@ func _process(delta):
 func init(track_):
 	self.track = get_node(track_)
 	self.track.play(0.0)
+	
+func stop():
+	self.track.stop()
