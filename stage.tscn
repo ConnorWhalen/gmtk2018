@@ -59,9 +59,8 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="nice_work" parent="static" index="3" instance=ExtResource( 8 )]
 
-visible = false
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 165, 200 )
+position = Vector2( 165, 20 )
 scale = Vector2( 2, 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 completeText = "Nice Work!"
@@ -70,7 +69,7 @@ completeText = "Nice Work!"
 
 visible = false
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 160, 200 )
+position = Vector2( 160, 20 )
 scale = Vector2( 2, 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 completeText = "Way to Go!"
@@ -79,10 +78,18 @@ completeText = "Way to Go!"
 
 visible = false
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 145, 200 )
+position = Vector2( 145, 20 )
 scale = Vector2( 2, 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 completeText = "Wow! Impressive!"
+
+[node name="press_start" parent="static" index="6" instance=ExtResource( 8 )]
+
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 115, 50 )
+scale = Vector2( 2, 2 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+completeText = "Press Enter or Start"
 
 [node name="camera" type="Camera2D" parent="." index="2"]
 
@@ -114,3 +121,5 @@ _sections_unfolded = [ "Drag Margin", "Limit", "Smoothing", "Transform" ]
 [node name="song" parent="." index="3" instance=ExtResource( 10 )]
 
 [node name="clap" parent="." index="4" instance=ExtResource( 11 )]
+
+
