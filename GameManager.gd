@@ -28,6 +28,7 @@ func on_pass_title():
 func on_pass_controls():
 	self.remove_child(currentScene)
 	currentScene = gameScene.instance()
+	currentScene.stageToLoad = "res://1.stage"
 	self.add_child(currentScene)
 	currentScene.connect("stage_lose", self, "on_stage_lose")
 	currentScene.connect("stage_win", self, "on_stage_win")
