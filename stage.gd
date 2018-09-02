@@ -1,6 +1,6 @@
 extends Node2D
 
-signal game_over
+
 signal clap_sample
 signal grab_food(a, b)
 signal win_screen

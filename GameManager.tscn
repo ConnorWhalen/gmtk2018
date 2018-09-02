@@ -3,7 +3,7 @@
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://TitleScreen.tscn" type="PackedScene" id=2]
 
-[node name="GameManager" type="Node"]
+[node name="GameManager" type="Node" index="0"]
 
 script = ExtResource( 1 )
 initialScene = ExtResource( 2 )
