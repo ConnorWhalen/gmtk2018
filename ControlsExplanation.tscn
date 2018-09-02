@@ -30,10 +30,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1.0
-margin_top = 3.0
-margin_right = 1281.0
-margin_bottom = 723.0
+margin_left = 2.0
+margin_top = 5.0
+margin_right = 1282.0
+margin_bottom = 725.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -45,41 +45,58 @@ stretch_mode = 0
 
 [node name="JugglingInfo" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 84.7927, 38.698 )
+position = Vector2( 72.7927, 26.698 )
+scale = Vector2( 1.5, 1.25 )
 _sections_unfolded = [ "Transform" ]
 completeText = "To Juggle: Left/Right Triggers OR W (left) and E (right)"
+horizontalSpacing = 11
 
-[node name="InteractingInfo" parent="." index="2" instance=ExtResource( 3 )]
+[node name="JugglingInfo2" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 44, 180 )
+position = Vector2( 115.793, 47.698 )
+scale = Vector2( 1.5, 1.25 )
+_sections_unfolded = [ "Transform" ]
+completeText = "Listen to the music to time your juggling!"
+horizontalSpacing = 11
+
+[node name="InteractingInfo" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 35, 168 )
+scale = Vector2( 1.5, 1.25 )
 _sections_unfolded = [ "Transform" ]
 completeText = "To interact with world: Left/Right Bumpers OR A (left) and S (right)"
+horizontalSpacing = 11
 
-[node name="MovementInfo" parent="." index="3" instance=ExtResource( 3 )]
+[node name="MovementInfo" parent="." index="4" instance=ExtResource( 3 )]
 
-position = Vector2( 147, 210 )
+position = Vector2( 139, 191 )
+scale = Vector2( 1.5, 1.25 )
 _sections_unfolded = [ "Transform" ]
 completeText = "Moving around: Left Stick OR Arrow Keys"
+horizontalSpacing = 11
 
-[node name="leftleft" parent="." index="4" instance=ExtResource( 4 )]
+[node name="leftleft" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 484, 550 )
 
-[node name="leftright" parent="." index="5" instance=ExtResource( 5 )]
+[node name="leftright" parent="." index="6" instance=ExtResource( 5 )]
 
 position = Vector2( 837, 555 )
 
-[node name="leftHandAnimatedSprite" parent="." index="6" instance=ExtResource( 6 )]
+[node name="leftHandAnimatedSprite" parent="." index="7" instance=ExtResource( 6 )]
 
-position = Vector2( 462, 219 )
+position = Vector2( 463, 224 )
 
-[node name="rightHandAnimatedSprite" parent="." index="7" instance=ExtResource( 7 )]
+[node name="rightHandAnimatedSprite" parent="." index="8" instance=ExtResource( 7 )]
 
-position = Vector2( 831, 222 )
+position = Vector2( 835, 231 )
 
-[node name="juggleToContinue" parent="." index="8" instance=ExtResource( 3 )]
+[node name="juggleToContinue" parent="." index="9" instance=ExtResource( 3 )]
 
-position = Vector2( 177.791, 306.021 )
+position = Vector2( 162.791, 292.021 )
+scale = Vector2( 1.5, 1.25 )
+_sections_unfolded = [ "Transform" ]
 completeText = "Press a juggle button to continue"
+horizontalSpacing = 11
 
 
