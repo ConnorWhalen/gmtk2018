@@ -165,7 +165,7 @@ func _win_screen():
 	get_node("static/sandwich").slide_in()
 
 func sandwich_done():
-	
+	pass
 
 func game_over():
 	print("oh no")
